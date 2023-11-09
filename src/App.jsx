@@ -31,18 +31,18 @@ const App = () => {
         .finally(() => setLoading(false));
     };
 
-    fetchImages(); // Cargar imágenes iniciales al cargar la página
+    fetchImages();
 
   }, [query, page]);
 
   const handleSearch = (searchQuery) => {
     setQuery(searchQuery);
     setImages([]);
-    setPage(1); // Restablece el valor de 'page' a 1
+    setPage(1);
   };
 
   const handleLoadMore = () => {
-    setPage((prevPage) => prevPage + 1); // Incrementa el valor de 'page' para cargar más imágenes
+    setPage((prevPage) => prevPage + 1);
   };
 
   const handleImageClick = (largeImageURL) => {
