@@ -26,25 +26,23 @@ const App = () => {
         .then((response) => response.json())
         .then((data) => {
           setImages((prevImages) => [...prevImages, ...data.hits]);
-          setPage((prevPage) => prevPage + 1);
         })
         .catch((error) => console.error(error))
         .finally(() => setLoading(false));
     };
 
-    if (query !== '') {
-      fetchImages();
-    }
-  }, [query, page]); // Incluyendo 'page' en el array de dependencias
+    fetchImages(); // Cargar imágenes iniciales al cargar la página
+
+  }, [query, page]);
 
   const handleSearch = (searchQuery) => {
     setQuery(searchQuery);
     setImages([]);
-    setPage(1);
+    setPage(1); // Restablece el valor de 'page' a 1
   };
 
   const handleLoadMore = () => {
-    // El estado de 'page' se actualiza automáticamente debido al efecto
+    setPage((prevPage) => prevPage + 1); // Incrementa el valor de 'page' para cargar más imágenes
   };
 
   const handleImageClick = (largeImageURL) => {
